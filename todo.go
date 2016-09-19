@@ -27,9 +27,14 @@ func main() {
 
 func initDB(filepath string) *sql.DB {
 	db, err := sql.Open("sqlite3", filepath)
+
+	// Here we check for any db errors then exit
 	if err != nil {
 		panic(err)
 	}
+
+	// If we don't get any errors but somehow still don't get a db connection
+	// we exit as well
 	if db == nil {
 		panic("db nil")
 	}
@@ -45,6 +50,7 @@ func migrate(db *sql.DB) {
 	`
 
 	_, err := db.Exec(sql)
+	// Exit if something goes wrong with our SQL statement above
 	if err != nil {
 		panic(err)
 	}
