@@ -61,7 +61,7 @@
                 created: function() {
                     // Use the vue-resource $http client to fetch data from the /tasks route
                     this.$http.get('/tasks').then(function(response) {
-                        this.tasks = response.data.items ? response.data.items : []
+                        this.tasks = response.data.item ? response.data.item : []
                     })
                 },
 
